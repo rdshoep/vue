@@ -29,6 +29,7 @@ export function initMixin (Vue: Class<Component>) {
     // a flag to avoid this being observed
     vm._isVue = true
     // merge options
+    // TODO _isComponent 的意义是？
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
@@ -89,6 +90,7 @@ function initInternalComponent (vm: Component, options: InternalComponentOptions
 }
 
 export function resolveConstructorOptions (Ctor: Class<Component>) {
+  // TODO options、extendedOptions、sealedOptions三者之间有什么关系？不可能为空么？
   let options = Ctor.options
   if (Ctor.super) {
     const superOptions = resolveConstructorOptions(Ctor.super)
